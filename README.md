@@ -3,6 +3,12 @@
 > mpvue的练手项目，尚硅谷公开视频，硅谷图书
 > 
 
+图：
+
+<img src="README.assets/1595049578989.png" alt="1595049578989" style="zoom:50%;" /><img src="README.assets/1595049598397.png" alt="1595049598397" style="zoom:50%;" /><img src="README.assets/1595049611368.png" alt="1595049611368" style="zoom:50%;" /><img src="README.assets/1595049631989.png" alt="1595049631989" style="zoom:50%;" /><img src="README.assets/1595049659565.png" alt="1595049659565" style="zoom:50%;" />
+
+
+
 
 
 项目技术架构说明：
@@ -17,12 +23,14 @@
 
 
 
-初始化项目
+启动项目
 
-1. npm install vue-cli -g 全局安装 vue 脚手架
-2. vue init mpvue/mpvue-quickstart my-project 初始化 mpvue 项目
-3. cd my-project 进入项目根目录
+3. cd mpvuePractice 进入项目根目录
 4. npm install 安装依赖
-5. npm run dev || npm start 启动初始化项目 
+5. cd backend 进入到后端
+4. npm install 安装依赖
+5. npm start 启动接口
+6. cd mpvuePractice 回到项目项目目录
+7. npm run dev || npm start 启动项目 
 
 
