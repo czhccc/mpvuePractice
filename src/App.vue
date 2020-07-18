@@ -1,50 +1,30 @@
 <script>
-export default {
-  created () {
-    // 调用API从本地缓存中获取数据
-    /*
-     * 平台 api 差异的处理方式:  api 方法统一挂载到 mpvue 名称空间, 平台判断通过 mpvuePlatform 特征字符串
-     * 微信：mpvue === wx, mpvuePlatform === 'wx'
-     * 头条：mpvue === tt, mpvuePlatform === 'tt'
-     * 百度：mpvue === swan, mpvuePlatform === 'swan'
-     * 支付宝(蚂蚁)：mpvue === my, mpvuePlatform === 'my'
-     */
+  import {request} from './utils/index'
+  export default {
+    async mounted(){
+      // 调用接口获取登录凭证(code)。通过凭证进而换取用户登录态信息，包括用户的唯一标识(openid)及本次登录的会话密钥(session_key)等。用户数据的加解密通讯需要依赖会话密钥完成。
+      wx.login({
+        success: async (res) => {
+          // 1. 获取用户登陆的临时凭证, 和用户是否授权没有直接关系  有效时长： 有效期五分钟
+          let code = res.code
 
-    let logs
-    if (mpvuePlatform === 'my') {
-      logs = mpvue.getStorageSync({key: 'logs'}).data || []
-      logs.unshift(Date.now())
-      mpvue.setStorageSync({
-        key: 'logs',
-        data: logs
+          // 2. 发送code给服务器端
+          let token = await request('/getOpenId', {code}) // 获取自定义登录状态
+
+          // 3. 将自定义登录状态缓存到storage中
+          wx.setStorageSync('token', token);
+        }
       })
-    } else {
-      logs = mpvue.getStorageSync('logs') || []
-      logs.unshift(Date.now())
-      mpvue.setStorageSync('logs', logs)
+
+      // 测试地址token
+      let result = await request('/test')
+      console.log('验证结果： ', result);
     }
-  },
-  log () {
-    console.log(`log at:${Date.now()}`)
   }
-}
 </script>
 
-<style>
-.container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 200rpx 0;
-  box-sizing: border-box;
-}
-/* this rule will be remove */
-* {
-  transition: width 2s;
-  -moz-transition: width 2s;
-  -webkit-transition: width 2s;
-  -o-transition: width 2s;
-}
+<style lang="stylus" rel="stylesheet/stylus">
+  page
+    width 100%
+    height 100%
 </style>

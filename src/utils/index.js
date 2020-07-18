@@ -1,24 +1,24 @@
-function formatNumber (n) {
-  const str = n.toString()
-  return str[1] ? str : `0${str}`
-}
+import config from './config'
 
-export function formatTime (date) {
-  const year = date.getFullYear()
-  const month = date.getMonth() + 1
-  const day = date.getDate()
+// 携带token的方式：1. cookie(不推荐) 2. 作为参数放在url中 3. 放在请求头
 
-  const hour = date.getHours()
-  const minute = date.getMinutes()
-  const second = date.getSeconds()
+let token = wx.getStorageSync('token'); // 获取缓存的token
 
-  const t1 = [year, month, day].map(formatNumber).join('/')
-  const t2 = [hour, minute, second].map(formatNumber).join(':')
-
-  return `${t1} ${t2}`
-}
-
-export default {
-  formatNumber,
-  formatTime
+export function request(url, data={}, method='GET') {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: config.host + url,
+      data,
+      method,
+      header: {
+        authorization: token
+      },
+      success: (res) => {
+        resolve(res.data)
+      },
+      fail: (error) => {
+        reject(error)
+      }
+    })
+  })
 }
