@@ -3,14 +3,6 @@
 > mpvue的练手项目，尚硅谷公开视频，硅谷图书
 > 
 
-图：
-
-<img src="README.assets/1595049578989.png" alt="1595049578989" style="zoom:33%;" /><img src="README.assets/1595049598397.png" alt="1595049598397" style="zoom:33%;" /><img src="README.assets/1595049611368.png" alt="1595049611368" style="zoom:33%;" /><img src="README.assets/1595049631989.png" alt="1595049631989" style="zoom:33%;" /><img src="README.assets/1595049659565.png" alt="1595049659565" style="zoom:33%;" />
-
-
-
-
-
 项目技术架构说明：
 
 1. 本项目为小程序项目，参考豆瓣图书板块创建
@@ -33,4 +25,6 @@
 6. cd mpvuePractice 回到项目项目目录
 7. npm run dev || npm start 启动项目 
 
+图：
 
+<img src="README.assets/1595049578989.png" alt="1595049578989" style="zoom:33%;" /><img src="README.assets/1595049598397.png" alt="1595049598397" style="zoom:33%;" /><img src="README.assets/1595049611368.png" alt="1595049611368" style="zoom:33%;" /><img src="README.assets/1595049631989.png" alt="1595049631989" style="zoom:33%;" /><img src="README.assets/1595049659565.png" alt="1595049659565" style="zoom:33%;" />
