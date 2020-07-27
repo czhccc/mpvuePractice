@@ -10,7 +10,7 @@
   "window": {
     "navigationBarBackgroundColor": "#02a774",
     "navigationBarTextStyle": "white",
-    "navigationBarTitleText": "硅谷书城"
+    "navigationBarTitleText": "书城"
   },
   "tabBar": {
     "list": [
